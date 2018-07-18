@@ -22,4 +22,7 @@ $app->before(function (Request $request, Application $app) {
         $data = json_decode($request->getContent(), true);
         $request->request->replace(is_array($data) ? $data : []);
     }
+    if (!$app['debug'] && $request->headers->get('auth-token', null) !== $app['auth.token']) {
+        return new JsonResponse(['data' => [], 'message' => 'Unauthorized', 'code' => 401], 401);
+    }
 });

@@ -9,9 +9,11 @@
 use Medoo\Medoo;
 use Silex\Provider\MonologServiceProvider;
 
-$app['debug'] = DEBUG;
+$app['debug'] = true;
+ini_set('display_errors', (int)$app['debug']);
 $app['app.name'] = 'Application Name';
 $app['app.path'] = dirname(__DIR__);
+$app['auth.token'] = 'auth.token';
 $app->register(new MonologServiceProvider(), ['monolog.logfile' => $app['app.path'] . '/runtime/log/app.log']);
 $app['aspect.options'] = [
     'diContainer' => $app,
