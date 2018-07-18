@@ -12,7 +12,7 @@ use Silex\Application;
 require dirname(__DIR__) . '/vendor/autoload.php';
 $app = new Application();
 require dirname(__DIR__) . '/config/config.php';
-require dirname(__DIR__) . '/config/constants.php.php';
+require dirname(__DIR__) . '/config/constants.php';
 require dirname(__DIR__) . '/config/router.php';
 AspectKernel::getInstance()->init($app['aspect.options']);
 $app->run();
